@@ -1,0 +1,9 @@
+import { app } from "./app";
+import { env } from "./env";
+
+app.listen({
+  host: "0.0.0.0", // Aceita conexões de qualquer interface de rede
+  port: env.PORT,
+}).then(() => {
+  console.log(`🚀 HTTP server running on port ${env.PORT}!`);
+});

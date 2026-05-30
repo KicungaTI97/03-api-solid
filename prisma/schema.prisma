@@ -1,0 +1,75 @@
+// Este é o seu arquivo de schema do Prisma.
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+
+// Abaixo estão os modelos ("model") que representam suas tabelas do banco de dados.
+// Cada modelo vira uma tabela. Vou te explicar as relações usando comentários bem simples.
+
+// O usuário (User) consegue fazer vários check-ins em academias (Gym).
+// O check-in (CheckIn) conecta o usuário à academia na qual ele fez o check-in, mostrando quem foi e onde.
+// A academia (Gym) pode ter vários check-ins de usuários diferentes.
+// Ou seja:
+// - Um usuário pode fazer muitos check-ins.
+// - Uma academia pode ser palco de vários check-ins por diferentes usuários.
+// - Um check-in sempre vai indicar qual usuário e qual academia estão ligados naquele registro.
+
+
+// Prisma Client -> Gera o código TypeScript para o Prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Datasource -> Define a fonte de dados (banco de dados)
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  MEMBER
+}
+
+// Tabela de usuários
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password_hash String
+  created_at DateTime @default(now())
+  role      Role     @default(MEMBER)
+
+  checkIns CheckIn[] // Um usuário pode ter vários check-ins associados a ele (um para muitos)
+  @@map("users")
+}
+
+
+// Tabela intermediária dos check-ins (liga Usuário e Academia)
+model CheckIn {
+  id String   @id @default(uuid())
+  created_at DateTime @default(now()) // data de quando o check-in foi feito
+  validated_at DateTime? // opcional: quando (ou se) esse check-in foi validado
+
+  user User @relation(fields: [user_id], references: [id]) // relação: este check-in pertence a um usuário
+  user_id String // campo que guarda o id do usuário
+
+  gym Gym @relation(fields: [gym_id], references: [id]) // relação: este check-in pertence a uma academia
+  gym_id String // campo que guarda o id da academia
+
+  @@map("check_ins") 
+}
+
+// Tabela de academias
+model Gym {
+  id        String   @id @default(uuid())
+  title     String 
+  description String?
+  phone String?
+  latitude Float 
+  longitude Float
+  created_at DateTime @default(now())
+
+  checkIns CheckIn[] // Uma academia pode ter vários check-ins (um para muitos)
+  @@map("gyms")
+}

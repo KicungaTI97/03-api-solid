@@ -1,0 +1,12 @@
+DATABASE_URL: postgresql://docker:docker@localhost:5433/apisolid?schema=e8a73d94-d784-4d5d-9ba7-44267b996859
+Generated URL: postgresql://docker:docker@localhost:5433/apisolid?schema=e8a73d94-d784-4d5d-9ba7-44267b996859
+PATH: /home/kicungadev/WWW/ignite/nodejs/03-api-solid/node_modules/.bin:/home/kicungadev/WWW/ignite/nodejs/node_modules/.bin:/home/kicungadev/WWW/ignite/node_modules/.bin:/home/kicungadev/WWW/node_modules/.bin:/home/kicungadev/node_modules/.bin:/home/node_modules/.bin:/node_modules/.bin:/snap/node/10816/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/home/kicungadev/.local/bin:/home/kicungadev/.bun/bin:/home/kicungadev/.bun/bin:/home/kicungadev/.console-ninja/.bin:/home/kicungadev/.local/share/zinit/polaris/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+Shell test passed: file created
+File content: hello from shell
+
+Node execPath version: v22.21.1
+
+Prisma binary exists
+Erro ao executar migrations
+STDOUT: 
+STDERR: 

@@ -1,0 +1,53 @@
+{
+  // Visit https://aka.ms/tsconfig to read more about this file
+  "compilerOptions": {
+    // File Layout
+    // "rootDir": "./src",
+    // "outDir": "./dist",
+    
+    "baseUrl": "./", // "baseUrl": "./" define a pasta raíz para resolver caminhos relativos, facilitando imports como "@/arquivo".
+    // "paths": { define um objeto que mapeia caminhos de importação para caminhos físicos.
+    "paths": { 
+      "@/*": ["./src/*"]  //faz com que todo import iniciado com "@/" aponte para a pasta "src", facilitando o acesso aos arquivos dessa pasta.
+    },
+
+    // Environment Settings
+    // See also https://aka.ms/tsconfig/module
+    "module": "ESNext",
+    "moduleResolution": "node", 
+    "target": "ES2023", 
+    "types": [],
+    
+    // For nodejs:
+    // "lib": ["esnext"],
+    // "types": ["node"],
+    // and npm install -D @types/node
+
+    // Other Outputs
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    // Stricter Typechecking Options
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    // Style Options
+    // "noImplicitReturns": true,
+    // "noImplicitOverride": true,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    // "noFallthroughCasesInSwitch": true,
+    // "noPropertyAccessFromIndexSignature": true,
+
+    // Recommended Options
+    "strict": true,
+    "jsx": "react-jsx",
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true
+  }
+}
