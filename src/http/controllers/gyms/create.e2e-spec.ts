@@ -20,7 +20,7 @@ describe('Create gym (e2e)', () => {
     const gymResponse = await request(app.server).post('/gyms/create').set('Authorization', `Bearer ${token}`).send({
       title: 'Gym',
       description: 'Gym description',
-      phone: '123456789',
+      phone: '123456789', 
       latitude: -27.0,
       longitude: -49.0,
     });

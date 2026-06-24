@@ -25,7 +25,7 @@ export class CreateGymUseCase {
       description,
       phone,
       latitude,
-      longitude,
+      longitude
     });
 
     return { gym };
